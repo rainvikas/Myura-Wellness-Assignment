@@ -1,0 +1,29 @@
+{
+  "name": "myura-wellness-assignment",
+  "version": "1.0.0",
+  "description": "Backend developer practical assignment for Myura Wellness.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "db:init": "node scripts/initDb.js",
+    "check": "node --check server.js && node --check src/app.js && node --check src/config/database.js && node --check src/controllers/productController.js && node --check src/controllers/orderController.js && node --check src/middleware/errorHandler.js && node --check src/routes/productRoutes.js && node --check src/routes/orderRoutes.js && node --check src/validators/productValidators.js && node --check src/validators/orderValidators.js && node --check src/utils/logger.js && node --check scripts/initDb.js && node --check tests/api.test.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.1.0",
+    "morgan": "^1.10.0",
+    "pg": "^8.13.3"
+  },
+  "devDependencies": {
+    "pg-mem": "^3.0.5",
+    "supertest": "^7.1.1"
+  }
+}
