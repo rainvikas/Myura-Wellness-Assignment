@@ -23,7 +23,23 @@ const allowedOrigins = (process.env.CORS_ORIGIN || "*")
 
 app.use(
   helmet({
-    crossOriginResourcePolicy: false
+    crossOriginResourcePolicy: false,
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        baseUri: ["'self'"],
+        fontSrc: ["'self'", "https://fonts.gstatic.com", "data:"],
+        formAction: ["'self'"],
+        frameAncestors: ["'self'"],
+        imgSrc: ["'self'", "data:"],
+        objectSrc: ["'none'"],
+        scriptSrc: ["'self'", "https://unpkg.com", "'unsafe-eval'"],
+        scriptSrcAttr: ["'none'"],
+        styleSrc: ["'self'", "https://fonts.googleapis.com", "'unsafe-inline'"],
+        connectSrc: ["'self'"],
+        upgradeInsecureRequests: []
+      }
+    }
   })
 );
 
@@ -78,4 +94,3 @@ app.use(notFoundHandler);
 app.use(errorHandler);
 
 module.exports = app;
-
