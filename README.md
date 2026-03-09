@@ -190,13 +190,14 @@ This repository includes [render.yaml](render.yaml) so it can be deployed as a R
 
 The current workspace cannot deploy to an external platform, so the public URLs still need to be filled in after deployment from your own Render/Railway/Vercel account.
 
-- GitHub repository link: `TO_BE_ADDED_AFTER_PUSH`
-- Live project URL: `TO_BE_ADDED_AFTER_DEPLOYMENT`
-- Backend API URL: `TO_BE_ADDED_AFTER_DEPLOYMENT`
+- GitHub repository link: `https://github.com/rainvikas/Myura-Wellness-Assignment`
+- Live project URL: `https://myura-wellness-api.onrender.com`
+- Backend API URL: `https://myura-wellness-api.onrender.com/api`
 
 ### Database setup details
 
 - Database engine: PostgreSQL
+- Database hosting: Render Free PostgreSQL
 - Schema bootstrap command: `npm run db:init`
 - Schema file: [src/db/schema.sql](src/db/schema.sql)
 - Order placement uses SQL transactions and `FOR UPDATE` row locks to avoid stock race conditions
