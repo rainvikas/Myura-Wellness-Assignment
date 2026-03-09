@@ -7,6 +7,7 @@
     "start": "node server.js",
     "dev": "node --watch server.js",
     "db:init": "node scripts/initDb.js",
+    "build:frontend": "esbuild public/app.jsx --outfile=public/app.js --loader:.jsx=jsx --format=iife --target=es2018 --jsx-factory=React.createElement --jsx-fragment=React.Fragment",
     "check": "node --check server.js && node --check src/app.js && node --check src/config/database.js && node --check src/controllers/productController.js && node --check src/controllers/orderController.js && node --check src/middleware/errorHandler.js && node --check src/routes/productRoutes.js && node --check src/routes/orderRoutes.js && node --check src/validators/productValidators.js && node --check src/validators/orderValidators.js && node --check src/utils/logger.js && node --check scripts/initDb.js && node --check tests/api.test.js",
     "test": "node --test"
   },
@@ -23,6 +24,7 @@
     "pg": "^8.13.3"
   },
   "devDependencies": {
+    "esbuild": "^0.27.3",
     "pg-mem": "^3.0.5",
     "supertest": "^7.1.1"
   }

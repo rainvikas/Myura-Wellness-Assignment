@@ -111,7 +111,10 @@ Task 4 is implemented.
 - Frontend source files:
   - `public/index.html`
   - `public/app.jsx`
+  - `public/app.js`
   - `public/styles.css`
+  - `public/vendor/react.production.min.js`
+  - `public/vendor/react-dom.production.min.js`
 
 ## Local Setup
 

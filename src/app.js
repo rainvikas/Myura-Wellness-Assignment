@@ -33,7 +33,7 @@ app.use(
         frameAncestors: ["'self'"],
         imgSrc: ["'self'", "data:"],
         objectSrc: ["'none'"],
-        scriptSrc: ["'self'", "https://unpkg.com", "'unsafe-eval'"],
+        scriptSrc: ["'self'"],
         scriptSrcAttr: ["'none'"],
         styleSrc: ["'self'", "https://fonts.googleapis.com", "'unsafe-inline'"],
         connectSrc: ["'self'"],
