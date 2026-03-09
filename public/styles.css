@@ -330,6 +330,29 @@ textarea {
   background: rgba(36, 67, 49, 0.06);
 }
 
+.order-result {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: rgba(255, 250, 242, 0.92);
+}
+
+.order-meta {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: var(--muted);
+}
+
+.order-meta p {
+  margin: 0;
+}
+
+.placed-order-summary {
+  margin-top: 8px;
+}
+
 .order-summary ul {
   margin: 12px 0 0;
   padding: 0;

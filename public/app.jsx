@@ -82,6 +82,7 @@ function App() {
     type: "",
     message: ""
   });
+  const [placedOrder, setPlacedOrder] = useState(null);
   const [isSubmittingProduct, setIsSubmittingProduct] = useState(false);
   const [isSubmittingOrder, setIsSubmittingOrder] = useState(false);
 
@@ -227,6 +228,7 @@ function App() {
         body: JSON.stringify(payload)
       });
 
+      setPlacedOrder(data.order);
       setOrderFeedback({
         type: "success",
         message: `Order #${data.order.id} placed successfully for ${formatCurrency(
@@ -516,6 +518,51 @@ function App() {
             <p className={`feedback ${orderFeedback.type}`}>
               {orderFeedback.message}
             </p>
+          ) : null}
+
+          {placedOrder ? (
+            <section className="order-result">
+              <div className="panel-header">
+                <div>
+                  <p className="section-kicker">Latest Order</p>
+                  <h3>Order #{placedOrder.id}</h3>
+                </div>
+                <span className="order-total">
+                  {formatCurrency(placedOrder.total_amount)}
+                </span>
+              </div>
+
+              <div className="order-meta">
+                <p>
+                  <strong>Customer:</strong> {placedOrder.customer_name}
+                </p>
+                <p>
+                  <strong>Email:</strong> {placedOrder.customer_email}
+                </p>
+                {placedOrder.customer_phone ? (
+                  <p>
+                    <strong>Phone:</strong> {placedOrder.customer_phone}
+                  </p>
+                ) : null}
+                <p>
+                  <strong>Address:</strong> {placedOrder.shipping_address}
+                </p>
+              </div>
+
+              <div className="order-summary placed-order-summary">
+                <h3>Placed items</h3>
+                <ul>
+                  {placedOrder.items.map((item) => (
+                    <li key={`${placedOrder.id}-${item.product_id}`}>
+                      <span>
+                        {item.product_name} x {item.quantity}
+                      </span>
+                      <strong>{formatCurrency(item.line_total)}</strong>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
           ) : null}
         </section>
       </main>

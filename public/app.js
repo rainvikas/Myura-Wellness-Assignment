@@ -67,6 +67,7 @@
       type: "",
       message: ""
     });
+    const [placedOrder, setPlacedOrder] = useState(null);
     const [isSubmittingProduct, setIsSubmittingProduct] = useState(false);
     const [isSubmittingOrder, setIsSubmittingOrder] = useState(false);
     async function loadProducts() {
@@ -188,6 +189,7 @@
           method: "POST",
           body: JSON.stringify(payload)
         });
+        setPlacedOrder(data.order);
         setOrderFeedback({
           type: "success",
           message: `Order #${data.order.id} placed successfully for ${formatCurrency(
@@ -306,7 +308,7 @@
         onChange: (event) => handleQuantityChange(product.id, event.target.value),
         placeholder: "0"
       }
-    )))), /* @__PURE__ */ React.createElement("div", { className: "order-summary" }, /* @__PURE__ */ React.createElement("h3", null, "Order summary"), selectedItems.length === 0 ? /* @__PURE__ */ React.createElement("p", { className: "muted" }, "No line items selected yet. Enter quantities to build the order.") : /* @__PURE__ */ React.createElement("ul", null, selectedItems.map((item) => /* @__PURE__ */ React.createElement("li", { key: item.product_id }, /* @__PURE__ */ React.createElement("span", null, item.product_name, " x ", item.quantity), /* @__PURE__ */ React.createElement("strong", null, formatCurrency(item.line_total)))))), /* @__PURE__ */ React.createElement("button", { className: "primary-button", disabled: isSubmittingOrder }, isSubmittingOrder ? "Placing order..." : "Place Order"))), orderFeedback.message ? /* @__PURE__ */ React.createElement("p", { className: `feedback ${orderFeedback.type}` }, orderFeedback.message) : null)));
+    )))), /* @__PURE__ */ React.createElement("div", { className: "order-summary" }, /* @__PURE__ */ React.createElement("h3", null, "Order summary"), selectedItems.length === 0 ? /* @__PURE__ */ React.createElement("p", { className: "muted" }, "No line items selected yet. Enter quantities to build the order.") : /* @__PURE__ */ React.createElement("ul", null, selectedItems.map((item) => /* @__PURE__ */ React.createElement("li", { key: item.product_id }, /* @__PURE__ */ React.createElement("span", null, item.product_name, " x ", item.quantity), /* @__PURE__ */ React.createElement("strong", null, formatCurrency(item.line_total)))))), /* @__PURE__ */ React.createElement("button", { className: "primary-button", disabled: isSubmittingOrder }, isSubmittingOrder ? "Placing order..." : "Place Order"))), orderFeedback.message ? /* @__PURE__ */ React.createElement("p", { className: `feedback ${orderFeedback.type}` }, orderFeedback.message) : null, placedOrder ? /* @__PURE__ */ React.createElement("section", { className: "order-result" }, /* @__PURE__ */ React.createElement("div", { className: "panel-header" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { className: "section-kicker" }, "Latest Order"), /* @__PURE__ */ React.createElement("h3", null, "Order #", placedOrder.id)), /* @__PURE__ */ React.createElement("span", { className: "order-total" }, formatCurrency(placedOrder.total_amount))), /* @__PURE__ */ React.createElement("div", { className: "order-meta" }, /* @__PURE__ */ React.createElement("p", null, /* @__PURE__ */ React.createElement("strong", null, "Customer:"), " ", placedOrder.customer_name), /* @__PURE__ */ React.createElement("p", null, /* @__PURE__ */ React.createElement("strong", null, "Email:"), " ", placedOrder.customer_email), placedOrder.customer_phone ? /* @__PURE__ */ React.createElement("p", null, /* @__PURE__ */ React.createElement("strong", null, "Phone:"), " ", placedOrder.customer_phone) : null, /* @__PURE__ */ React.createElement("p", null, /* @__PURE__ */ React.createElement("strong", null, "Address:"), " ", placedOrder.shipping_address)), /* @__PURE__ */ React.createElement("div", { className: "order-summary placed-order-summary" }, /* @__PURE__ */ React.createElement("h3", null, "Placed items"), /* @__PURE__ */ React.createElement("ul", null, placedOrder.items.map((item) => /* @__PURE__ */ React.createElement("li", { key: `${placedOrder.id}-${item.product_id}` }, /* @__PURE__ */ React.createElement("span", null, item.product_name, " x ", item.quantity), /* @__PURE__ */ React.createElement("strong", null, formatCurrency(item.line_total))))))) : null)));
   }
   ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(App, null));
 })();
