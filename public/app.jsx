@@ -288,38 +288,61 @@ function App() {
               No products available yet. Add your first product from the form.
             </div>
           ) : (
-            <div className="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Product</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                    <th>Stock</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {products.map((product) => (
-                    <tr key={product.id}>
-                      <td>
-                        <strong>{product.product_name}</strong>
-                      </td>
-                      <td>{product.category}</td>
-                      <td>{formatCurrency(product.price)}</td>
-                      <td>
-                        <span
-                          className={
-                            product.stock > 0 ? "stock-pill" : "stock-pill low"
-                          }
-                        >
-                          {product.stock}
-                        </span>
-                      </td>
+            <>
+              <div className="table-wrap desktop-products">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Product</th>
+                      <th>Category</th>
+                      <th>Price</th>
+                      <th>Stock</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    {products.map((product) => (
+                      <tr key={product.id}>
+                        <td>
+                          <strong>{product.product_name}</strong>
+                        </td>
+                        <td>{product.category}</td>
+                        <td>{formatCurrency(product.price)}</td>
+                        <td>
+                          <span
+                            className={
+                              product.stock > 0 ? "stock-pill" : "stock-pill low"
+                            }
+                          >
+                            {product.stock}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="mobile-product-list">
+                {products.map((product) => (
+                  <article className="mobile-product-card" key={`mobile-${product.id}`}>
+                    <div className="mobile-product-top">
+                      <strong>{product.product_name}</strong>
+                      <span
+                        className={
+                          product.stock > 0 ? "stock-pill" : "stock-pill low"
+                        }
+                      >
+                        {product.stock}
+                      </span>
+                    </div>
+                    <div className="mobile-product-meta">
+                      <span>{product.category}</span>
+                      <span>{formatCurrency(product.price)}</span>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </>
           )}
         </section>
 
