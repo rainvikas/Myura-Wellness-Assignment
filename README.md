@@ -98,6 +98,21 @@ Quick summary:
 - `PUT /api/products/:id/stock` sets the absolute stock value for a product.
 - `POST /api/orders` creates an order and reduces stock in the same transaction.
 
+## Frontend UI
+
+Task 4 is implemented.
+
+- Live frontend URL: `https://myura-wellness-api.onrender.com`
+- Frontend stack: React UI served by the Express backend
+- UI features:
+  - view all products
+  - add a new product
+  - place an order
+- Frontend source files:
+  - `public/index.html`
+  - `public/app.jsx`
+  - `public/styles.css`
+
 ## Local Setup
 
 ### Prerequisites
@@ -114,7 +129,7 @@ Recommended `.env` for local setup:
 ```env
 PORT=5000
 NODE_ENV=development
-DATABASE_URL=
+DATABASE_URL=postgresql://postgres:your_password@localhost:5432/myura_wellness
 CORS_ORIGIN=http://localhost:5000
 RATE_LIMIT_WINDOW_MS=900000
 RATE_LIMIT_MAX=100
@@ -170,7 +185,7 @@ This repository includes [render.yaml](render.yaml) so it can be deployed as a R
 2. In Render, create a new Blueprint and connect the repository.
 3. Render will provision:
    - a PostgreSQL database named `myura-wellness-db`
-   - a web service named `myura-wellness-app`
+   - a web service for the app
 4. Set `CORS_ORIGIN` to the final public app URL in the Render dashboard.
 5. Deploy the blueprint.
 6. Confirm the app is reachable at `/` and the API is reachable at `/api/health`.
@@ -188,7 +203,7 @@ This repository includes [render.yaml](render.yaml) so it can be deployed as a R
 
 ### Live URLs
 
-The current workspace cannot deploy to an external platform, so the public URLs still need to be filled in after deployment from your own Render/Railway/Vercel account.
+The project is deployed and the frontend and backend are live at the URLs below.
 
 - GitHub repository link: `https://github.com/rainvikas/Myura-Wellness-Assignment`
 - Live project URL: `https://myura-wellness-api.onrender.com`
