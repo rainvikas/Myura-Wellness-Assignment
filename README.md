@@ -49,7 +49,6 @@ A full-stack implementation of the Myura Wellness backend practical assignment u
 |   |-- utils/           # Logger and AppError
 |   |-- validators/      # Request validation
 |-- tests/               # Automated API tests with pg-mem + supertest
-|-- .env.example
 |-- package.json
 |-- render.yaml
 |-- server.js
@@ -108,7 +107,7 @@ Quick summary:
 
 ### 1. Configure environment variables
 
-Copy `.env.example` to `.env` and update the values.
+Create a `.env` file in the project root and add the following values.
 
 Recommended `.env` for local setup:
 
